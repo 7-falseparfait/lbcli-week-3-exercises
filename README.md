@@ -20,7 +20,7 @@ Exercise should be done using Regtest network.
 
 <img src="https://github.com/btrust-builders/lbcli-week-3-exercises/blob/main/success.png" width="300" />
 
-7. Submit your solution to this form: [Google form](https://forms.gle/MHXcSUFStn5vr5dXA).
+7. Submit your solution to this form: [Google form](https://forms.gle/AcGYXpLZQrRYnddk6).
 
 PS: You can commit and push as often as you like and GitHub Actions will re-evaluate your code every time.
 You will need to look through the auto-grader logs (in the "Actions" tab) to see what exactly you got right or wrong.

@@ -69,10 +69,11 @@ jobs:
 
       - name: 03.sh - Verify Multisig P2SH Address Generation
         run: |
+          actual_sha() { printf '%s' "$1" | sha256sum | awk '{print $1}'; }
           chmod +x submission/03.sh
           P2SH_ADDRESS=$(submission/03.sh)
-          EXPECTED_OUTPUT=2N8Xijk8DpVva2PZkH3N25QQg3ExbSmZfEt
-          if [[ "$P2SH_ADDRESS" == "$EXPECTED_OUTPUT" ]]; then
+          EXPECTED_SHA=2a8555480b8dc8079d76cc01d493db3f6a2a6fb553cab096ef302aa9a7a786bc
+          if [[ "$(actual_sha "$P2SH_ADDRESS")" == "$EXPECTED_SHA" ]]; then
             echo "✅ Success: Multisig P2SH address generation passed!"
           else
             echo "❌ Error: Multisig P2SH address generation failed!"
@@ -81,10 +82,11 @@ jobs:
 
       - name: 04.sh - Verify 2-of-3 P2SH Address Generation
         run: |
+          actual_sha() { printf '%s' "$1" | sha256sum | awk '{print $1}'; }
           chmod +x submission/04.sh
           P2SH_ADDRESS=$(submission/04.sh)
-          EXPECTED_OUTPUT=2MyXiyCRVXJ8YgnifFMVwVqFf1kBSHpt8xC
-          if [[ "$P2SH_ADDRESS" == "$EXPECTED_OUTPUT" ]]; then
+          EXPECTED_SHA=71c0ecb1f8b049bef69423993d6fa250e5d8f7c0c0d3f2c655ae72d88a09527a
+          if [[ "$(actual_sha "$P2SH_ADDRESS")" == "$EXPECTED_SHA" ]]; then
             echo "✅ Success: 2-of-3 P2SH address generation passed!"
           else
             echo "❌ Error: 2-of-3 P2SH address generation failed!"
@@ -93,10 +95,11 @@ jobs:
 
       - name: 05.sh - Verify Partially Signed Bitcoin Transaction Generation
         run: |
+          actual_sha() { printf '%s' "$1" | sha256sum | awk '{print $1}'; }
           chmod +x submission/05.sh
           PSBT=$(submission/05.sh)
-          EXPECTED_OUTPUT=cHNidP8BAHwCAAAAAhYO5d0UYxa7NADt4NStUSq5we3khqtaEZou6dQ3n8EjAAAAAAD9////Fg7l3RRjFrs0AO3g1K1RKrnB7eSGq1oRmi7p1DefwSMBAAAAAP3///8BAC0xAQAAAAAXqRQh7ZB2LhbqrqGIquGRQuWyW/ddI4cAAAAAAAAAAA==
-          if [[ "$PSBT" == "$EXPECTED_OUTPUT" ]]; then
+          EXPECTED_SHA=6f04a9b547c740487f68690609e0f48000f200b710ab6f6fd34a122904cc2669
+          if [[ "$(actual_sha "$PSBT")" == "$EXPECTED_SHA" ]]; then
             echo "✅ Success: Partially Signed Bitcoin Transaction generation passed!"
           else
             echo "❌ Error: Partially Signed Bitcoin Transaction generation failed!"
@@ -105,9 +108,11 @@ jobs:
 
       - name: 06.sh - Verify Hash for Partially Signed Bitcoin Transaction
         run: |
+          actual_sha() { printf '%s' "$1" | sha256sum | awk '{print $1}'; }
           chmod +x submission/06.sh
           HASH=$(submission/06.sh)
-          if [[ "$HASH" == "ea73a631b456d2b041ed73bf5767946408c6ff067716929a68ecda2e3e4de6d3" ]]; then
+          EXPECTED_SHA=341883239f3d189fa268f13e798c7da3e4f6f946e48e23ff5168c167b586a900
+          if [[ "$(actual_sha "$HASH")" == "$EXPECTED_SHA" ]]; then
             echo "✅ Success: Hash Verification for Partially Signed Bitcoin Transaction passed!"
           else
             echo "❌ Error: Hash Verification for Partially Signed Bitcoin Transaction failed!"
@@ -116,10 +121,11 @@ jobs:
 
       - name: 07.sh - Verify Total Transaction Output Amount In Satoshis
         run: |
+          actual_sha() { printf '%s' "$1" | sha256sum | awk '{print $1}'; }
           chmod +x submission/07.sh
           ACTUAL_OUTPUT=$(submission/07.sh)
-          EXPECTED_OUTPUT=650
-          if [[ "$ACTUAL_OUTPUT" == "$EXPECTED_OUTPUT" ]]; then
+          EXPECTED_SHA=2099a9b5f777e242d1f9e19d27e232cc71e2fa7964fc988a319fce5671ca7f73
+          if [[ "$(actual_sha "$ACTUAL_OUTPUT")" == "$EXPECTED_SHA" ]]; then
             echo "✅ Success: Total Transaction Output Amount In Satoshis Check passed!"
           else
             echo "❌ Error: Total Transaction Output Amount In Satoshis Check failed!"
@@ -128,9 +134,11 @@ jobs:
 
       - name: 08.sh - Verify Receivers Address Partially Signed Bitcoin Transaction
         run: |
+          actual_sha() { printf '%s' "$1" | sha256sum | awk '{print $1}'; }
           chmod +x submission/08.sh
           ADD=$(submission/08.sh)
-          if [[ "$ADD" == "bcrt1qcaedd724gts3aug73m78c7nfsv9d8zs9znw8py" ]]; then
+          EXPECTED_SHA=3ed76037b964b8894ec758ba2da8d152ddd027f299867cc48a54d4ac206c8b86
+          if [[ "$(actual_sha "$ADD")" == "$EXPECTED_SHA" ]]; then
             echo "✅ Success: Address Verification for Partially Signed Bitcoin Transaction passed!"
           else
             echo "❌ Error: Address Verification for Partially Signed Bitcoin Transaction failed!"
