@@ -1,4 +1,5 @@
 # Create a native segwit address and get the public key from the address.
+bitcoin-cli -regtest createwallet btrustwallet
 ADDR=$(bitcoin-cli -regtest -rpcwallet=btrustwallet getnewaddress "" bech32)
 
 # Get the public key from the address
